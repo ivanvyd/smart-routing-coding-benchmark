@@ -1,5 +1,7 @@
 # Prompt-based model routing for coding agents on Databricks
 
+[![CI](https://github.com/ivanvyd/smart-routing-coding-benchmark/actions/workflows/ci.yml/badge.svg)](https://github.com/ivanvyd/smart-routing-coding-benchmark/actions/workflows/ci.yml)
+
 This repository contains a 72-run engineering benchmark of three model-selection
 strategies for Claude Code through Databricks Unity AI Gateway:
 
@@ -65,6 +67,10 @@ done
 
 See [reproduction.md](docs/reproduction.md) for telemetry, analysis, evidence
 export, and pre-publication checks.
+
+Contributions are welcome through pull requests. Read
+[`CONTRIBUTING.md`](CONTRIBUTING.md) before submitting changes and report
+security concerns through the process in [`SECURITY.md`](SECURITY.md).
 
 ## Evidence and cost boundary
 

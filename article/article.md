@@ -168,3 +168,9 @@ A stronger follow-up would repeat each task several times and interleave arms.
 The practical finding remains narrow: a disclosed, prompt-only router preserved
 task success while cutting strong-model spend in this corpus, measured against
 completed work and audited fixtures.
+
+## Code and evidence
+
+You can inspect the harness, task corpus, sanitized run records, pricing
+snapshot, analysis code, and figures in the
+[public benchmark repository](https://github.com/ivanvyd/smart-routing-coding-benchmark).
