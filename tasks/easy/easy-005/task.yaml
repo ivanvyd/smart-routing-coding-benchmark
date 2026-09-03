@@ -1,0 +1,27 @@
+id: easy-005
+title: "Add a JSON schema check to an API client"
+difficulty: easy
+category: config-validation
+description: |
+  Add a strict JSON schema check that rejects responses missing required
+  fields or with wrong types.
+prompt: |
+  Implement `validate_user` in src/api.py so it raises ValidationError on
+  missing fields or wrong types. The test suite covers the contract.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/api.py
+  - tests/test_api.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/api.py
+  - tests/test_api.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

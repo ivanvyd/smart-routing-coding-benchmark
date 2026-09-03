@@ -1,0 +1,7 @@
+INSERT INTO users VALUES (1, '2026-01-01');
+INSERT INTO users VALUES (2, '2026-01-01');
+INSERT INTO users VALUES (3, '2026-01-02');
+INSERT INTO events VALUES (10, 1, '2026-01-03 10:00', 'page_view');
+INSERT INTO events VALUES (11, 1, '2026-01-03 10:01', 'page_view');
+INSERT INTO events VALUES (12, 2, '2026-01-03 11:00', 'click');
+INSERT INTO events VALUES (13, 3, '2026-01-04 09:00', 'click');

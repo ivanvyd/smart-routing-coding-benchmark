@@ -1,0 +1,30 @@
+id: hard-003
+title: "Performance + correctness: O(n^2) string concat in a hot path"
+difficulty: hard
+category: performance-correctness
+description: |
+  The function builds a CSV with string concatenation in a loop. It is
+  correct but quadratic. Fix performance without breaking correctness, and
+  add a regression test for the boundary case.
+prompt: |
+  Replace the O(n^2) string concatenation in src/report.py with a single
+  join. Add a regression test in tests/ that exercises a large input
+  (1000+ rows) to ensure performance does not regress catastrophically.
+  Do not change existing tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/report.py
+  - tests/test_report.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/report.py
+  - tests/test_report.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

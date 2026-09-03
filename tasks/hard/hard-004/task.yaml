@@ -1,0 +1,37 @@
+id: hard-004
+title: "Schema evolution with dependent code: a value rename + 3 call sites"
+difficulty: hard
+category: schema-evolution
+description: |
+  A value enum gained a new variant and renamed an old one. Five files
+  depend on it. Update the enum and the call sites.
+prompt: |
+  The enum in src/orders.py added a new variant `cancelled` and renamed
+  `refunded` to `returned`. Update the enum and all call sites in src/
+  to use the new name. Do not change tests; they already use the new
+  names.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/orders.py
+  - src/fulfilment.py
+  - src/notifications.py
+  - src/reporting.py
+  - src/billing.py
+  - tests/test_orders.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/orders.py
+  - src/fulfilment.py
+  - src/notifications.py
+  - src/reporting.py
+  - src/billing.py
+  - tests/test_orders.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

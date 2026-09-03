@@ -1,0 +1,12 @@
+# BUG: 'on_' is not a valid trigger. YAML parses, but the trigger is dead.
+on_:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pytest -q

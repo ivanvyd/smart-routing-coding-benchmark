@@ -1,0 +1,18 @@
+id: easy-007
+title: "Fix a YAML config typo in a CI workflow"
+difficulty: easy
+category: yaml-fix
+description: |
+  A CI workflow's `on:` key is mis-spelled `on_:`, which silently disables
+  the trigger. Fix the workflow so it loads and triggers on push.
+prompt: |
+  The file .github/workflows/ci.yaml does not parse. Find and fix the
+  YAML so `python -c "import yaml; yaml.safe_load(open('ci.yaml'))"`
+  returns a dict with an `on` key. Do not change the file's filename.
+verifier: |
+  python -c "import yaml; d = yaml.safe_load(open('.github/workflows/ci.yaml')); assert 'on' in d, list(d)"
+required_files:
+  - .github/workflows/ci.yaml
+forbidden_modifications: []
+files:
+  - .github/workflows/ci.yaml

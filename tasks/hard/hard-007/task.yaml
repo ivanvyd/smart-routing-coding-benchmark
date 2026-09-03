@@ -1,0 +1,31 @@
+id: hard-007
+title: "Architecture-level: introduce a small plugin registry"
+difficulty: hard
+category: architecture-modification
+description: |
+  Add a small plugin registry so that new feature flags can be added
+  without changing the central dispatcher.
+prompt: |
+  Add a small registry in src/registry.py and refactor src/dispatcher.py
+  to consult it. The tests specify the contract. Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/registry.py
+  - src/dispatcher.py
+  - tests/test_registry.py
+  - tests/test_dispatcher.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/registry.py
+  - src/dispatcher.py
+  - tests/test_registry.py
+  - tests/test_dispatcher.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

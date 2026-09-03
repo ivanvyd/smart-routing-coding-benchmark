@@ -1,0 +1,29 @@
+id: easy-002
+title: "Add null-handling to a config loader"
+difficulty: easy
+category: null-handling
+description: |
+  The load_settings helper in src/config.py crashes with KeyError when an
+  expected key is missing, and silently returns None when the value is the
+  string "null". Add proper error reporting and a typed-default helper.
+prompt: |
+  Implement `load_settings` and `get_or_raise` in src/config.py so that
+  tests/test_config.py passes. Do not change tests, pyproject.toml, or
+  conftest.py.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/config.py
+  - tests/test_config.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/config.py
+  - tests/test_config.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

@@ -1,0 +1,28 @@
+id: easy-003
+title: "Rename a function across a small package"
+difficulty: easy
+category: rename-refactor
+description: |
+  Rename `compute_total` to `sum_amounts` across the package. Callers and
+  tests reference both. Do not change tests.
+prompt: |
+  The function compute_total in src/billing.py must be renamed to
+  sum_amounts. Update all internal callers in src/ and keep the public
+  behaviour identical. Do not modify tests/.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/billing.py
+  - src/__init__.py
+  - tests/test_billing.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/billing.py
+  - src/__init__.py
+  - tests/test_billing.py
+  - tests/__init__.py
+  - pyproject.toml

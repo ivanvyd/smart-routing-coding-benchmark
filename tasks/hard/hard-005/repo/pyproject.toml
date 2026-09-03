@@ -1,0 +1,4 @@
+[project]
+name = "hard-005-fetcher"
+version = "0.0.1"
+requires-python = ">=3.12"

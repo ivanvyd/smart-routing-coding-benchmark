@@ -1,0 +1,29 @@
+id: easy-008
+title: "Implement a small JSON-to-CSV transformer"
+difficulty: easy
+category: data-transformation
+description: |
+  Implement a deterministic, streaming JSON-to-CSV converter that handles
+  nested objects via dotted-key flattening.
+prompt: |
+  Implement `flatten_and_to_csv` in src/transform.py so tests pass. The
+  function should read a JSON array from stdin, flatten nested keys with
+  dots, and emit CSV to stdout. Tests check both the dict- and the
+  string-input shapes.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/transform.py
+  - tests/test_transform.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/transform.py
+  - tests/test_transform.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

@@ -1,0 +1,35 @@
+id: medium-001
+title: "Fix a multi-file cache invalidation bug"
+difficulty: medium
+category: multi-file-defect
+description: |
+  The cache module and its consumer do not agree on the key format. One
+  uses 'user:<id>' and the other 'user_<id>'. Make them agree, in a single
+  consistent format, without breaking the public API.
+prompt: |
+  Two modules disagree on the cache key format. The cache stores under
+  'user:<id>' but the consumer reads with 'user_<id>'. Fix BOTH to use a
+  single canonical format, documented in src/cache.py. Do not change
+  tests, the public function `cache_get` / `cache_set` signatures, or
+  pyproject.toml.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/cache.py
+  - src/consumer.py
+  - tests/test_cache.py
+  - tests/test_consumer.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/cache.py
+  - src/consumer.py
+  - tests/test_cache.py
+  - tests/test_consumer.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

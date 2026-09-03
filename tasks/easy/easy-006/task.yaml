@@ -1,0 +1,28 @@
+id: easy-006
+title: "Add missing unit tests for a slugify helper"
+difficulty: easy
+category: missing-tests
+description: |
+  Add pytest unit tests for src/slug.py that cover the cases enumerated in
+  the existing tests/test_slug.py skeleton. Do not modify src/.
+prompt: |
+  Implement the test cases in tests/test_slug.py that are marked TODO. The
+  expected behaviour of slugify is described in the file. Do not modify
+  src/slug.py.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/slug.py
+  - tests/test_slug.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - src/slug.py
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/slug.py
+  - tests/test_slug.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

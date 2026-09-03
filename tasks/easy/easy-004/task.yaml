@@ -1,0 +1,39 @@
+id: easy-004
+title: "Fix a SQL aggregation that double-counts"
+difficulty: easy
+category: sql-bug
+description: |
+  A SQL query counts repeated events instead of distinct active users. Fix
+  the aggregation.
+prompt: |
+  The query in sql/dau.sql counts repeated events instead of distinct active
+  users per day. The verifier (sql/expected.csv) is the authoritative result.
+  Make the query match it. Do not modify sql/expected.csv.
+verifier: |
+  python -c "
+  import csv, sqlite3
+  con = sqlite3.connect(':memory:')
+  with open('sql/schema.sql') as f: con.executescript(f.read())
+  with open('sql/seed.sql')   as f: con.executescript(f.read())
+  with open('sql/dau.sql')    as f: query = f.read()
+  got = list(con.execute(query))
+  with open('sql/expected.csv') as f:
+    expected = list(csv.reader(f))
+  expected_tuples = [(r[0], int(r[1])) for r in expected[1:]]
+  assert got == expected_tuples, f'mismatch: got {got} expected {expected_tuples}'
+  print('OK')
+  "
+required_files:
+  - sql/dau.sql
+  - sql/schema.sql
+  - sql/seed.sql
+  - sql/expected.csv
+forbidden_modifications:
+  - sql/expected.csv
+  - sql/seed.sql
+  - sql/schema.sql
+files:
+  - sql/dau.sql
+  - sql/schema.sql
+  - sql/seed.sql
+  - sql/expected.csv

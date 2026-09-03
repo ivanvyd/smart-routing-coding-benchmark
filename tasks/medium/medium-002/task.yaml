@@ -1,0 +1,29 @@
+id: medium-002
+title: "Fix an async bug in a background worker"
+difficulty: medium
+category: async-bug
+description: |
+  A background worker races between cancelled tasks and a result writer.
+  Fix the cancellation handling so partial results are not lost.
+prompt: |
+  The async worker in src/worker.py silently drops results from cancelled
+  tasks. Make it return partial results up to cancellation, raise
+  asyncio.CancelledError at the end, and pass tests. Do not change tests
+  or pyproject.toml.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/worker.py
+  - tests/test_worker.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/worker.py
+  - tests/test_worker.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

@@ -1,0 +1,29 @@
+id: medium-005
+title: "API behavior change: handle the new error response shape"
+difficulty: medium
+category: api-behavior-change
+description: |
+  The upstream API changed from returning `{errors: [{code, message}]}`
+  to `{error: {code, message}, request_id: "..."}`. Update the client
+  to use the new shape and keep tests passing.
+prompt: |
+  Update the client in src/client.py to use the new response shape. Tests
+  in tests/ use the new shape. Do not change tests, pyproject.toml, or
+  conftest.py.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/client.py
+  - tests/test_client.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/client.py
+  - tests/test_client.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

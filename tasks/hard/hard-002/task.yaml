@@ -1,0 +1,38 @@
+id: hard-002
+title: "Cross-module refactor: introduce a Strategy for retry policy"
+difficulty: hard
+category: cross-module-refactor
+description: |
+  Three call sites have ad-hoc retry loops with subtly different policies.
+  Centralise them behind a single RetryPolicy + run_with_retry helper.
+prompt: |
+  Centralise the three ad-hoc retry loops in src/retries.py, src/api.py,
+  and src/jobs.py behind a single `RetryPolicy` and a `run_with_retry`
+  helper. The behavioural tests in tests/ assert that all three call sites
+  now agree on backoff, max attempts, and which exceptions are retryable.
+  Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/retries.py
+  - src/api.py
+  - src/jobs.py
+  - tests/test_retries.py
+  - tests/test_api.py
+  - tests/test_jobs.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/retries.py
+  - src/api.py
+  - src/jobs.py
+  - tests/test_retries.py
+  - tests/test_api.py
+  - tests/test_jobs.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

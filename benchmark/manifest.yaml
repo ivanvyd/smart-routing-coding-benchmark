@@ -1,0 +1,170 @@
+schema_version: 1
+benchmark_name: smart-model-routing-on-databricks
+benchmark_version: 0.1.0
+created: 2026-08-30
+environment:
+  python: 3.12.3
+  databricks_cli: v1.10.0
+  ucode: 0.0.0
+  claude_code: 2.1.258 (Claude Code)
+  os: Linux
+  os_release: 6.18.33.2-microsoft-standard-WSL2
+  benchmark_git_commit: 4bf2ebe00441419dfd1ce79c84fba3bca40e75ed
+  workspace_region: ''
+  workspace_cloud: ''
+  captured_at_utc: '2026-09-03T07:59:10+00:00'
+workspace:
+  region_field: workspace_region
+  cloud_field: workspace_cloud
+  workspace_reachable: true
+arms:
+- id: FIXED_STRONG
+  description: Stronger model in the measured client-router candidate set.
+  selection_mode: pinned_model
+  model: system.ai.claude-sonnet-5
+  routing_via: unity_ai_gateway
+- id: FIXED_CHEAP
+  description: Cheaper model in the measured client-router candidate set.
+  selection_mode: pinned_model
+  model: system.ai.claude-haiku-4-5
+  routing_via: unity_ai_gateway
+- id: CLIENT_ROUTING
+  description: Prompt-only client router followed by a pinned ucode invocation.
+  selection_mode: prompt_router
+  model: null
+  routing_via: unity_ai_gateway
+  router_model: system.ai.claude-haiku-4-5
+  router_policy: prompt-only-v1
+  candidate_models:
+    cheap: system.ai.claude-haiku-4-5
+    strong: system.ai.claude-sonnet-5
+  notes: The router sees only the task title and request. It cannot read the difficulty
+    label, verifier, expected output, or results from another arm.
+execution:
+  isolation: git_worktree
+  base_branch: main
+  base_commit_at_run: ''
+  randomize_order: true
+  random_seed: 42
+  parallelism: serial
+  wall_clock_timeout_seconds: 900
+capture:
+  stdout: true
+  stderr: true
+  exit_code: true
+  diff: true
+  start_iso: true
+  end_iso: true
+  durations_seconds: true
+  ucode_request_id: true
+  claude_session_id: true
+telemetry:
+  ai_gateway_table: system.ai_gateway.usage
+  billing_table: system.billing.usage
+  telemetry_ingestion_lag_minutes_max: 60
+  correlation_strategy: requester_filter_plus_exact_serial_time_windows
+validity:
+- Every arm truly routes through Unity AI Gateway (verifiable in system.ai_gateway.usage).
+- CLIENT_ROUTING records its selected model, reason, selector token count, and frozen
+  policy hash.
+- Every task has a machine-verifiable acceptance contract.
+- Each run starts from the same git commit.
+- No data from one arm's run leaks into another arm's run.
+- All raw artifacts (stdout, stderr, diff, timing) are preserved in results/raw/.
+tasks:
+- id: easy-001
+  difficulty: easy
+  path: tasks/easy/easy-001
+  acceptance: tests
+- id: easy-002
+  difficulty: easy
+  path: tasks/easy/easy-002
+  acceptance: tests
+- id: easy-003
+  difficulty: easy
+  path: tasks/easy/easy-003
+  acceptance: tests
+- id: easy-004
+  difficulty: easy
+  path: tasks/easy/easy-004
+  acceptance: sql_assertion
+- id: easy-005
+  difficulty: easy
+  path: tasks/easy/easy-005
+  acceptance: structured_output
+- id: easy-006
+  difficulty: easy
+  path: tasks/easy/easy-006
+  acceptance: tests
+- id: easy-007
+  difficulty: easy
+  path: tasks/easy/easy-007
+  acceptance: tests
+- id: easy-008
+  difficulty: easy
+  path: tasks/easy/easy-008
+  acceptance: tests
+- id: medium-001
+  difficulty: medium
+  path: tasks/medium/medium-001
+  acceptance: tests
+- id: medium-002
+  difficulty: medium
+  path: tasks/medium/medium-002
+  acceptance: tests
+- id: medium-003
+  difficulty: medium
+  path: tasks/medium/medium-003
+  acceptance: tests
+- id: medium-004
+  difficulty: medium
+  path: tasks/medium/medium-004
+  acceptance: tests
+- id: medium-005
+  difficulty: medium
+  path: tasks/medium/medium-005
+  acceptance: tests
+- id: medium-006
+  difficulty: medium
+  path: tasks/medium/medium-006
+  acceptance: tests
+- id: medium-007
+  difficulty: medium
+  path: tasks/medium/medium-007
+  acceptance: sql_assertion
+- id: medium-008
+  difficulty: medium
+  path: tasks/medium/medium-008
+  acceptance: tests
+- id: hard-001
+  difficulty: hard
+  path: tasks/hard/hard-001
+  acceptance: tests
+- id: hard-002
+  difficulty: hard
+  path: tasks/hard/hard-002
+  acceptance: tests
+- id: hard-003
+  difficulty: hard
+  path: tasks/hard/hard-003
+  acceptance: tests
+- id: hard-004
+  difficulty: hard
+  path: tasks/hard/hard-004
+  acceptance: tests
+- id: hard-005
+  difficulty: hard
+  path: tasks/hard/hard-005
+  acceptance: tests
+- id: hard-006
+  difficulty: hard
+  path: tasks/hard/hard-006
+  acceptance: tests
+- id: hard-007
+  difficulty: hard
+  path: tasks/hard/hard-007
+  acceptance: tests
+- id: hard-008
+  difficulty: hard
+  path: tasks/hard/hard-008
+  acceptance: tests

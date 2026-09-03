@@ -1,0 +1,82 @@
+{
+  "excluded_tasks": {
+    "easy-004": "The original verifier compared SQLite tuples with unnormalized CSV lists.",
+    "hard-005": "The starting fetcher already forwarded the asserted timeout, while synchronous server teardown caused the apparent hang.",
+    "medium-007": "The original seed and expected CSV disagreed, and the starting query did not create the declared fanout."
+  },
+  "metrics": {
+    "CLIENT_ROUTING": {
+      "arm": "CLIENT_ROUTING",
+      "cost_per_attempted_task": 0.1259390261904762,
+      "cost_per_successful_task": 0.1259390261904762,
+      "error_rate": 0.042105263157894736,
+      "invocations_per_run": 13.571428571428571,
+      "mean_duration_seconds": 76.7087619047619,
+      "mean_latency_ms": 4123.277192982456,
+      "median_duration_seconds": 64.967,
+      "n_easy": 7,
+      "n_hard": 7,
+      "n_medium": 7,
+      "n_runs": 21,
+      "p95_latency_ms": 6808.600000000001,
+      "passes_easy": 7,
+      "passes_hard": 7,
+      "passes_medium": 7,
+      "task_success_rate": 1.0,
+      "total_estimated_cost": 2.64471955,
+      "total_input_tokens": 6793713,
+      "total_output_tokens": 86435,
+      "total_tokens": 6880148
+    },
+    "FIXED_CHEAP": {
+      "arm": "FIXED_CHEAP",
+      "cost_per_attempted_task": 0.11128282857142857,
+      "cost_per_successful_task": 0.11684697,
+      "error_rate": 0.0,
+      "invocations_per_run": 18.761904761904763,
+      "mean_duration_seconds": 106.14980952380954,
+      "mean_latency_ms": 3717.319796954315,
+      "median_duration_seconds": 76.759,
+      "n_easy": 7,
+      "n_hard": 7,
+      "n_medium": 7,
+      "n_runs": 21,
+      "p95_latency_ms": 9375.399999999983,
+      "passes_easy": 7,
+      "passes_hard": 7,
+      "passes_medium": 6,
+      "task_success_rate": 0.9523809523809523,
+      "total_estimated_cost": 2.3369394,
+      "total_input_tokens": 10509204,
+      "total_output_tokens": 148975,
+      "total_tokens": 10658179
+    },
+    "FIXED_STRONG": {
+      "arm": "FIXED_STRONG",
+      "cost_per_attempted_task": 0.17474369523809524,
+      "cost_per_successful_task": 0.17474369523809524,
+      "error_rate": 0.08936170212765958,
+      "invocations_per_run": 11.19047619047619,
+      "mean_duration_seconds": 92.71857142857142,
+      "mean_latency_ms": 6038.778723404255,
+      "median_duration_seconds": 55.911,
+      "n_easy": 7,
+      "n_hard": 7,
+      "n_medium": 7,
+      "n_runs": 21,
+      "p95_latency_ms": 18774.599999999988,
+      "passes_easy": 7,
+      "passes_hard": 7,
+      "passes_medium": 7,
+      "task_success_rate": 1.0,
+      "total_estimated_cost": 3.6696176,
+      "total_input_tokens": 7140021,
+      "total_output_tokens": 93465,
+      "total_tokens": 7233486
+    }
+  },
+  "router_error_cases": {
+    "over_routing": [],
+    "under_routing": []
+  }
+}

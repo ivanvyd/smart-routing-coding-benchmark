@@ -1,0 +1,9 @@
+run_date: 2026-09-03
+applies_to_base_commit: 386387056c8fb9502a975776b4df695e0029fd0b
+tasks:
+  easy-004:
+    reason: The original verifier compared SQLite tuples with unnormalized CSV lists.
+  medium-007:
+    reason: The original seed and expected CSV disagreed, and the starting query did not create the declared fanout.
+  hard-005:
+    reason: The starting fetcher already forwarded the asserted timeout, while synchronous server teardown caused the apparent hang.

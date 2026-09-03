@@ -1,0 +1,31 @@
+id: easy-001
+title: "Fix off-by-one in a small Python function"
+difficulty: easy
+category: bug-fix
+description: |
+  A small Python helper computes the number of days between two dates, but
+  treats both endpoints as inclusive — that double-counts the starting day.
+  The unit tests in tests/ describe the expected behaviour (start inclusive,
+  end exclusive). Make the function pass.
+prompt: |
+  The helper `days_between(start, end)` in src/dates.py currently returns
+  `(end - start).days + 1`, which counts both endpoints. The unit tests in
+  tests/test_dates.py expect start-inclusive, end-exclusive semantics.
+  Make the function pass the tests. Do not change the tests. Do not modify
+  any file under tests/.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/__init__.py
+  - src/dates.py
+  - tests/__init__.py
+  - tests/test_dates.py
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/dates.py
+  - tests/test_dates.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

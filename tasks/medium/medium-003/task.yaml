@@ -1,0 +1,33 @@
+id: medium-003
+title: "Schema evolution: handle a renamed column"
+difficulty: medium
+category: schema-transformation
+description: |
+  Upstream renamed a column from `customer_id` to `cust_id`. The transform
+  step uses the old name and breaks the pipeline. Update the schema layer
+  AND the readers so the change is centralized.
+prompt: |
+  Schema evolved: `customer_id` was renamed to `cust_id`. Fix the central
+  schema in src/schema.py and the readers in src/readers.py so the
+  pipeline still produces the expected output. Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/schema.py
+  - src/readers.py
+  - tests/test_schema.py
+  - tests/test_readers.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/schema.py
+  - src/readers.py
+  - tests/test_schema.py
+  - tests/test_readers.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

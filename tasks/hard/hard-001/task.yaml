@@ -1,0 +1,26 @@
+id: hard-001
+title: "Concurrency defect: lost updates in a counter"
+difficulty: hard
+category: concurrency-defect
+description: |
+  A counter increment helper has a TOCTOU race. Fix it with a lock.
+prompt: |
+  Fix the concurrency defect in src/counter.py. Do not change tests, the
+  public function signature, or pyproject.toml.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/counter.py
+  - tests/test_counter.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/counter.py
+  - tests/test_counter.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

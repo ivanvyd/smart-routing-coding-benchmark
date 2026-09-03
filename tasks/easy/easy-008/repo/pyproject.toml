@@ -1,0 +1,4 @@
+[project]
+name = "easy-008-transform"
+version = "0.0.1"
+requires-python = ">=3.12"

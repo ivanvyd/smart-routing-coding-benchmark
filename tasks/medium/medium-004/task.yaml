@@ -1,0 +1,31 @@
+id: medium-004
+title: "Fix a Databricks Asset Bundle misconfiguration"
+difficulty: medium
+category: databricks-bundle
+description: |
+  A DABs job definition references a cluster that does not exist and a
+  parameter that the task does not accept. Make the bundle validate.
+prompt: |
+  Fix databricks.yml so that `databricks bundle validate` (or the
+  equivalent schema check the verifier runs) succeeds. The job must
+  reference a valid cluster (or use serverless), and the task parameters
+  must match the task's expectations.
+verifier: |
+  python -c "
+  import yaml, sys
+  cfg = yaml.safe_load(open('databricks.yml'))
+  assert 'resources' in cfg, 'missing resources block'
+  assert 'jobs' in cfg['resources'], 'no jobs defined'
+  job = next(iter(cfg['resources']['jobs'].values()))
+  tasks = job.get('tasks', [])
+  assert tasks, 'no tasks'
+  for t in tasks:
+    assert 'task_key' in t, 'task missing task_key'
+    assert 'notebook_task' in t or 'python_wheel_task' in t or 'spark_python_task' in t, f'task {t} missing executable'
+  print('OK')
+  "
+required_files:
+  - databricks.yml
+forbidden_modifications: []
+files:
+  - databricks.yml

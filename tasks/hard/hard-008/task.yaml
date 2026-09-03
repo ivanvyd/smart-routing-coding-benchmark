@@ -1,0 +1,28 @@
+id: hard-008
+title: "Complex state: a queue that double-delivers"
+difficulty: hard
+category: complex-state
+description: |
+  A delivery queue marks items as delivered without atomically removing
+  them from the queue, so workers deliver the same item twice.
+prompt: |
+  Fix the race in src/queue.py. Use a context manager to make the
+  "mark delivered + remove" step atomic in a single-process test
+  scenario. Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/queue.py
+  - tests/test_queue.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/queue.py
+  - tests/test_queue.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

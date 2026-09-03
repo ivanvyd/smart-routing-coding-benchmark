@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Benchmark artifacts
+results/raw/
+results/normalized/
+results/attributed/
+results/figures/
+results/tables/*.csv
+results/tables/*.png
+# Per-arm harness sidecars: written by runner.py at the end of each arm, must
+# not count as agent-modified tracked files between arms.
+results/tables/base_commit_*.txt
+worktrees/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets (defense in depth)
+.env
+.env.*
+.databrickscfg
+.mcp-auth/
+credentials*.json
+*.pem
+*.key
+*.pfx
+*.p12
+*.tfstate
+*.tfstate.*

@@ -1,0 +1,27 @@
+id: medium-008
+title: "Test exposes the indirect cause: a list-shared default"
+difficulty: medium
+category: indirect-cause
+description: |
+  A test fails only when run after a specific other test. The cause is a
+  mutable default argument shared across calls.
+prompt: |
+  Fix the function in src/jobs.py that uses a mutable default argument.
+  The test suite reproduces the leak. Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/jobs.py
+  - tests/test_jobs.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/jobs.py
+  - tests/test_jobs.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

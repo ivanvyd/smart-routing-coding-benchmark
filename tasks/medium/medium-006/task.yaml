@@ -1,0 +1,28 @@
+id: medium-006
+title: "Stale-cache bug: verify-then-update ordering"
+difficulty: medium
+category: caching-issue
+description: |
+  A cache update races a freshness check. Ensure a verify-then-set pattern
+  that does not let stale values overwrite fresh ones.
+prompt: |
+  src/cache_v2.py has a verify-then-update bug where a stale read can be
+  written over a fresh value. Make the operation atomic-enough for the
+  tests to pass. Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/cache_v2.py
+  - tests/test_cache_v2.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/cache_v2.py
+  - tests/test_cache_v2.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

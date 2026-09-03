@@ -1,0 +1,24 @@
+# BUG: references cluster_id that does not exist; task has params that
+# the task source notebook does not read.
+bundle:
+  name: broken-pipeline
+
+resources:
+  jobs:
+    broken_job:
+      name: broken_job
+      existing_cluster_id: "9999-999999-notreal"   # does not exist
+      parameters:
+        - "environment=prod"
+        - "run_date=2026-01-01"
+      tasks:
+        - task_key: ingest
+          existing_cluster_id: "9999-999999-notreal"
+          notebook_task:
+            notebook_path: /Workspace/Shared/ingest
+            base_parameters:
+              source: "s3://bucket/file.csv"   # ingest.py does not read 'source'
+        - task_key: transform
+          spark_python_task:
+            python_file: ./transform.py
+            parameters: []

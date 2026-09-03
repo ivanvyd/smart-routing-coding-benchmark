@@ -1,0 +1,31 @@
+id: hard-006
+title: "Misleading symptom: a fix that looks right but isn't"
+difficulty: hard
+category: misleading-symptom
+description: |
+  A unit test passes. An integration test fails. The unit test is
+  misleading: the bug is at the boundary the unit test never exercises.
+prompt: |
+  src/pipeline.py processes records through stages. The unit test
+  (test_pipeline) passes; the integration test (test_pipeline_io) fails
+  because of a normalisation step at the I/O boundary. Make both pass.
+  Do not change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/pipeline.py
+  - tests/test_pipeline.py
+  - tests/test_pipeline_io.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/pipeline.py
+  - tests/test_pipeline.py
+  - tests/test_pipeline_io.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml

@@ -1,0 +1,28 @@
+id: hard-005
+title: "Multi-stage investigation: make a stalled HTTP request time out"
+difficulty: hard
+category: multi-stage-investigation
+description: |
+  A test reproduces a stalled response. Use the test and call site to find
+  the missing timeout propagation.
+prompt: |
+  src/fetcher.py can wait indefinitely when a server accepts a connection but
+  never sends a response. Make the call honor its timeout argument. Do not
+  change tests.
+verifier: "python -m pytest -q tests/"
+required_files:
+  - src/fetcher.py
+  - tests/test_fetcher.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
+forbidden_modifications:
+  - tests/**
+  - pyproject.toml
+  - conftest.py
+files:
+  - src/fetcher.py
+  - tests/test_fetcher.py
+  - src/__init__.py
+  - tests/__init__.py
+  - pyproject.toml
